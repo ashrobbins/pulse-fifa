@@ -97,6 +97,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (max-width: 450px) {
 
+    .add-result__player,
+    .add-result__score {
+        font-size: 1.1rem;
+    }
+
+    .add-result__score {
+        margin: 0 .4rem;
+    }
+
     .add-result__submit {
         margin-top: 1rem;
         line-height: 3rem;
