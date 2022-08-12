@@ -3,7 +3,7 @@ import './styles/App.css';
 import { db } from './js/common/firebase';
 import { onValue, ref } from 'firebase/database';
 
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { LeagueTable } from './js/components/league-table';
 import { AddResult } from './js/components/add-result';
 import { Result } from './js/components/result';
@@ -48,22 +48,27 @@ function App() {
     }, [] );
 
     return (
-        <div className='App'>
-            <LeagueTable players={ players } results={ results } />
+        <Fragment>
+            <header className='site-header'>
+                <h1>FIFA League</h1>
+            </header>
+            <div className='App'>
+                <LeagueTable players={ players } results={ results } />
 
-            <div className='results'>
-                <AddResult players={ players } />
+                <div className='results'>
+                    <AddResult players={ players } />
 
-                <ul className='results__list'>
-                    { results.length > 0 && players.length > 0 ? (
-                        results.map( ( result, index ) => {
-                            return <Result key={ `result_${ index }` } match={ result } players={ players } />
-                        } )
-                    ) : null }
-                </ul>
+                    <ul className='results__list'>
+                        { results.length > 0 && players.length > 0 ? (
+                            results.map( ( result, index ) => {
+                                return <Result key={ `result_${ index }` } match={ result } players={ players } />
+                            } )
+                        ) : null }
+                    </ul>
+                </div>
             </div>
-        </div>
-  );
+        </Fragment>
+    );
 }
 
 export default App;

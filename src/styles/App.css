@@ -3,20 +3,21 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     flex-direction: row;
-    padding: 3rem;
-    margin: 2rem;
+    margin: 0 4rem;
 }
 
-.add-result {
+.site-header {
     display: flex;
+    margin-bottom: 4rem;
+    padding: 2rem 4rem;
+    background-color: #111111;
+    color: #ffffff;
 }
 
-.add-result__score {
-    width: 3rem;
-    margin: 0 1rem;
-    padding: 0;
-    text-align: center;
-    appearance: text;
+.site-header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
 }
 
 @media (max-width: 960px) {

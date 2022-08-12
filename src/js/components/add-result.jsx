@@ -68,9 +68,7 @@ export function AddResult( players ) {
                     value={ player1Score }
                     onChange={ handlePlayer1ScoreChange }
                 />
-
                 -
-
                 <input
                     type='number'
                     className="add-result__score"
