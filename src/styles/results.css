@@ -6,6 +6,7 @@
 
 .add-result {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .add-result__score {
@@ -26,6 +27,7 @@
 }
 
 .add-result__submit {
+    flex-shrink: 0;
     margin-left: 1rem;
     font-size: 1.6rem;
     font-weight: bold;
@@ -91,4 +93,12 @@ input[type=number]::-webkit-outer-spin-button {
     content: '-';
     display: inline;
     margin: 0 .5rem;
+}
+
+@media (max-width: 450px) {
+
+    .add-result__submit {
+        margin-top: 1rem;
+        line-height: 3rem;
+    }
 }
