@@ -1,6 +1,4 @@
 .App {
-    display: flex;
-    flex-direction: column;
     padding: 3rem;
 }
 
@@ -14,10 +12,4 @@
     padding: 0;
     text-align: center;
     appearance: text;
-}
-
-@media (max-width: 960px) {
-    .App {
-        flex-direction: row;
-    }
 }

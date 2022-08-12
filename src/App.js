@@ -1,24 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+
+import { db } from './js/common/firebase';
+import { onValue, ref } from 'firebase/database';
+
+import { useEffect, useState } from 'react';
+import { LeagueTable } from './js/components/league-table';
+import { AddResult } from './js/components/add-result';
+import { Result } from './js/components/result';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    const [ players, setPlayers ] = useState( [] );
+    const [ results, setResults ] = useState( [] );
+
+    useEffect( () => {
+        let playersData = [];
+
+        const playersQuery = ref( db, '/players' );
+        return onValue( playersQuery, ( snapshot ) => {
+            snapshot.forEach( player => {
+                const playerData = player.val();
+
+                if ( playerData ) {
+                    playersData.push( playerData );
+                }
+            });
+
+            setPlayers( playersData );
+        });
+    }, [] );
+
+    useEffect( () => {
+        let results = [];
+
+        const resultsQuery = ref( db, '/results' );
+        return onValue( resultsQuery, ( snapshot ) => {
+            snapshot.forEach( result => {
+                const resultData = result.val();
+
+                if ( resultData ) {
+                    results.push( resultData );
+                }
+            });
+
+            setResults( results );
+        } );
+    }, [] );
+
+    return (
+        <div className='App'>
+            <LeagueTable players={ players } results={ results } />
+
+            <div className='results'>
+                <AddResult players={ players } />
+
+                <ul className='results__list'>
+                    { results.length > 0 && players.length > 0 ? (
+                        results.map( ( result, index ) => {
+                            return <Result key={ `result_${ index }` } match={ result } players={ players } />
+                        } )
+                    ) : null }
+                </ul>
+            </div>
+        </div>
   );
 }
 
