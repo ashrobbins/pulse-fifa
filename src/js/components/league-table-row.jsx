@@ -5,7 +5,7 @@ export function LeagueTableRow( player, results ) {
 
     const playerResults = useMemo( () => {
         return player.results.filter( result => {
-            if ( result.teams[ 1 ].id === player.player.id || result.teams[ 2 ].id === player.player.id ) {
+            if ( result.teams[ 0 ].id === player.player.id || result.teams[ 1 ].id === player.player.id ) {
                 return result;
             }
 
@@ -22,10 +22,10 @@ export function LeagueTableRow( player, results ) {
 
         playerResults.forEach( result => {
             let winnerId;
-            if ( result.teams[ 1 ].score > result.teams[ 2 ].score ) {
+            if ( result.teams[ 0 ].score > result.teams[ 1 ].score ) {
+                winnerId = result.teams[ 0 ].id;
+            } else if ( result.teams[ 1 ].score > result.teams[ 0 ].score ) {
                 winnerId = result.teams[ 1 ].id;
-            } else if ( result.teams[ 2 ].score > result.teams[ 1 ].score ) {
-                winnerId = result.teams[ 2 ].id;
             }
 
             if ( winnerId === player.player.id ) {
@@ -45,10 +45,10 @@ export function LeagueTableRow( player, results ) {
 
         playerResults.forEach( result => {
             let loserId;
-            if ( result.teams[ 1 ].score > result.teams[ 2 ].score ) {
-                loserId = result.teams[ 2 ].id;
-            } else if ( result.teams[ 2 ].score > result.teams[ 1 ].score ) {
+            if ( result.teams[ 0 ].score > result.teams[ 1 ].score ) {
                 loserId = result.teams[ 1 ].id;
+            } else if ( result.teams[ 1 ].score > result.teams[ 0 ].score ) {
+                loserId = result.teams[ 0 ].id;
             }
 
             if ( loserId === player.player.id ) {
@@ -67,7 +67,7 @@ export function LeagueTableRow( player, results ) {
         let draws = 0;
 
         playerResults.forEach( result => {
-            if ( result.teams[ 1 ].score === result.teams[ 2 ].score ) {
+            if ( result.teams[ 0 ].score === result.teams[ 1 ].score ) {
                 draws++;
             }
         } );
@@ -86,12 +86,12 @@ export function LeagueTableRow( player, results ) {
         };
 
         playerResults.forEach( result => {
-            if ( result.teams[ 1 ].id === player.player.id ) {
-                goals.for = goals.for + result.teams[ 1 ].score;
-                goals.against = goals.against + result.teams[ 2 ].score;
-            } else {
-                goals.for = goals.for + result.teams[ 2 ].score;
+            if ( result.teams[ 0 ].id === player.player.id ) {
+                goals.for = goals.for + result.teams[ 0 ].score;
                 goals.against = goals.against + result.teams[ 1 ].score;
+            } else {
+                goals.for = goals.for + result.teams[ 1 ].score;
+                goals.against = goals.against + result.teams[ 0 ].score;
             }
         } );
 
@@ -106,11 +106,11 @@ export function LeagueTableRow( player, results ) {
         let points = 0;
 
         playerResults.forEach( result => {
-            if ( result.teams[ 1 ].score > result.teams[ 2 ].score && result.teams[ 1 ].id === player.player.id ) {
+            if ( result.teams[ 0 ].score > result.teams[ 1 ].score && result.teams[ 0 ].id === player.player.id ) {
                 points = points + 3;
-            } else if ( result.teams[ 2 ].score > result.teams[ 1 ].score && result.teams[ 2 ].id === player.player.id ) {
+            } else if ( result.teams[ 1 ].score > result.teams[ 0 ].score && result.teams[ 1 ].id === player.player.id ) {
                 points = points + 3;
-            } else if ( result.teams[ 1 ].score === result.teams[ 2 ].score ) {
+            } else if ( result.teams[ 0 ].score === result.teams[ 1 ].score ) {
                 points = points + 1;
             }
         } );
