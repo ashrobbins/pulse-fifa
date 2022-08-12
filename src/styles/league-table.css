@@ -36,3 +36,11 @@
 .league-table__points {
     font-weight: bold;
 }
+
+@media (max-width: 600px) {
+
+    .league-table__team {
+        display: block;
+        margin-left: 0;
+    }
+}

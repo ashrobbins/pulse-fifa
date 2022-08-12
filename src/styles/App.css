@@ -1,5 +1,10 @@
 .App {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    flex-direction: row;
     padding: 3rem;
+    margin: 2rem;
 }
 
 .add-result {
@@ -12,4 +17,11 @@
     padding: 0;
     text-align: center;
     appearance: text;
+}
+
+@media (max-width: 960px) {
+    .App {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
 }
