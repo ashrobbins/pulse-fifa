@@ -73,7 +73,21 @@ input[type=number]::-webkit-outer-spin-button {
     border-top: 1px solid #e5ecf2;
 }
 
+.results__player,
 .results__scores {
+    display: flex;
+}
+
+.results__player {
+    width: calc((100% - 7rem) / 2);
+}
+
+.results__player--home {
+    justify-content: end;
+}
+
+.results__scores {
+    width: 5rem;
     margin: 0 1rem;
     padding: .6rem 1rem;
     background-color: #f4f6fc;
@@ -99,6 +113,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .add-result__player,
     .add-result__score {
+        height: 3.2rem;
         font-size: 1.1rem;
     }
 
@@ -107,7 +122,6 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     .add-result__submit {
-        margin-top: 1rem;
         line-height: 3rem;
     }
 }

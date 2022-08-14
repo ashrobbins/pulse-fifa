@@ -1,7 +1,16 @@
 import '../../styles/league-table.css';
 import { LeagueTableRow } from './league-table-row';
+import { getStandings } from '../common/get-standings';
+import { useMemo } from 'react';
 
 export function LeagueTable( players, results ) {
+
+    const standings = useMemo( () => {
+        if ( players.players && players.results ) {
+            return getStandings( players.players, players.results );
+        }
+        return [];
+    }, [ players ] );
 
     return (
         <table className='league-table'>
@@ -14,15 +23,15 @@ export function LeagueTable( players, results ) {
                     <th>L</th>
                     <th>GF</th>
                     <th>GA</th>
+                    <th>GD</th>
                     <th>Points</th>
                 </tr>
             </thead>
             <tbody>
-                { players.players.map( ( player, index ) => {
+                { standings.map( ( player, index ) => {
                     return <LeagueTableRow
                         key={ `table-row_${ index }` }
                         player={ player }
-                        results={ players.results }
                         />
                 } ) }
             </tbody>
