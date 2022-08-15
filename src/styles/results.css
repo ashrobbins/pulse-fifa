@@ -105,11 +105,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .results__player {
+    align-items: center;
     width: calc((100% - 7rem) / 2);
 }
 
 .results__player--home {
     justify-content: end;
+}
+
+.results__player--home img {
+    margin-right: 1rem;
+}
+
+.results__player--away img {
+    margin-left: 1rem;
 }
 
 .results__scores {
@@ -153,6 +162,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 .results__item:hover .results__delete:hover {
     opacity: 1;
+}
+
+.results__face {
+    width: auto;
+    height: 3.6rem;
 }
 
 @media (max-width: 450px) {

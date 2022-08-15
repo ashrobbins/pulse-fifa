@@ -56,13 +56,25 @@ export function Result( match, players ) {
 
     return (
         <li className='results__item'>
-            <span className={ `results__player results__player--home ${ team1?.score < team2?.score ? 'results__player--loser' : '' }` }>{ team1?.name }</span>
+            <span className={ `results__player results__player--home ${ team1?.score < team2?.score ? 'results__player--loser' : '' }` }>
+                <img
+                    src={ `./${ team1.name?.toLowerCase() }.png` }
+                    alt={ `${ team1.name } face` }
+                    className='results__face' />
+                { team1?.name }
+            </span>
             <span className='results__scores'>
                 <span className='results__score'>{ team1?.score }</span>
                 <span className='results__separator'></span>
                 <span className='results__score'>{ team2?.score }</span>
             </span>
-            <span className={ `results__player results__player--away ${ team2?.score < team1?.score ? 'results__player--loser' : '' }` }>{ team2?.name }</span>
+            <span className={ `results__player results__player--away ${ team2?.score < team1?.score ? 'results__player--loser' : '' }` }>
+                { team2?.name }
+                <img
+                    src={ `./${ team2.name?.toLowerCase() }.png` }
+                    alt={ `${ team2.name } face` }
+                    className='results__face' />
+            </span>
             <button className="results__delete" onClick={ handleDeleteClick }>❌</button>
         </li>
     )
