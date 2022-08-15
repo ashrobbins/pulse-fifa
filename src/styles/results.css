@@ -35,9 +35,12 @@
 }
 
 .add-result__error {
+    width: 100%;
+    flex-shrink: 0;
     margin-bottom: 0;
     font-size: 1.4rem;
     font-weight: bold;
+    text-align: center;
     color: rgb(233, 115, 115);
     animation: ease-in-and-out 3s forwards;
 }
