@@ -129,8 +129,13 @@ export const getStandings = ( players, results ) => {
     } );
 
     return standings.sort( function ( a, b ) {
+        // Sorts first on points, then goal difference, and then goals scored
         if ( a.points === b.points ){
-          return +( a.goalDiff < b.goalDiff ) || +( a.goalDiff === b.goalDiff ) - 1;
+            if ( a.goalDiff === b.goalDiff ) {
+                return +( a.goalsFor < b.goalsFor ) || +( a.goalsFor === b.goalsFor ) - 1;
+            }
+
+            return +( a.goalDiff < b.goalDiff ) || +( a.goalDiff === b.goalDiff ) - 1;
         }
 
         return +( a.points < b.points ) || - 1;
