@@ -10,4 +10,6 @@
 **Nice-to-haves**
 
 🔲 Create new league
+🔲 Create new seasons
 🔲 Add players via UI
+🔲 Champion styles at end of season
