@@ -50,6 +50,17 @@ function App() {
         } );
     } );
 
+    function checkResultExists( newResult ) {
+        let exists = false;
+        results.forEach( result => {
+            if ( result.teams[ 0 ].id === newResult.teams[ 0 ].id && result.teams[ 1 ].id === newResult.teams[ 1 ].id ) {
+                exists = true;
+            }
+        } );
+
+        return exists;
+    }
+
     return (
         <Fragment>
             <header className='site-header'>
@@ -59,7 +70,7 @@ function App() {
                 <LeagueTable players={ players } results={ results } />
 
                 <div className='results'>
-                    <AddResult players={ players } />
+                    <AddResult players={ players } checkResultExists={ checkResultExists } />
 
                     <ul className='results__list'>
                         { results.length > 0 && players.length > 0 ? (

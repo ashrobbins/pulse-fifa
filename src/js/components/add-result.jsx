@@ -1,12 +1,13 @@
 import { useMemo, useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
-import { SCORES } from "../common/constants";
+import { SCORES, THREE_SECONDS } from "../common/constants";
 
-export function AddResult( players ) {
+export function AddResult( players, checkResultExists ) {
     const [ player1, setPlayer1 ] = useState( 0 );
     const [ player1Score, setPlayer1Score ] = useState( 0 );
     const [ player2, setPlayer2 ] = useState( 0 );
     const [ player2Score, setPlayer2Score ] = useState( 0 );
+    const [ resultExists, setResultExists ] = useState( false );
 
     function handlePlayer1Change( event ) {
         setPlayer1( event.target.value );
@@ -34,6 +35,7 @@ export function AddResult( players ) {
     }, [ player1, player2 ] );
 
     function submitScore() {
+
         const result = {
             teams: {
                 0: {
@@ -47,15 +49,23 @@ export function AddResult( players ) {
             }
         };
 
-        const db = getDatabase();
-        const testRef = ref( db, 'results' );
-        const newTestRef = push( testRef );
-        set( newTestRef, result );
+        if ( players.checkResultExists( result ) ) {
+            setResultExists( true );
 
-        setPlayer1( 0 );
-        setPlayer1Score( 0 );
-        setPlayer2( 0 );
-        setPlayer2Score( 0 );
+            setTimeout( () => {
+                setResultExists( false );
+            }, THREE_SECONDS );
+        } else {
+            const db = getDatabase();
+            const testRef = ref( db, 'results' );
+            const newTestRef = push( testRef );
+            set( newTestRef, result );
+
+            setPlayer1( 0 );
+            setPlayer1Score( 0 );
+            setPlayer2( 0 );
+            setPlayer2Score( 0 );
+        }
     }
 
     return (
@@ -97,6 +107,8 @@ export function AddResult( players ) {
             </select>
 
             <button onClick={ submitScore } disabled={ !canSubmit } className='add-result__submit'>Add</button>
+
+            { resultExists ? <p className='add-result__error'>A result has already been submitted for this fixture</p> : null }
         </div>
     )
 }

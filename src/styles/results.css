@@ -34,6 +34,28 @@
     cursor: pointer;
 }
 
+.add-result__error {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgb(233, 115, 115);
+    animation: ease-in-and-out 3s forwards;
+}
+
+@keyframes ease-in-and-out {
+    0% {
+        opacity: 0;
+    }
+
+    10%, 90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
