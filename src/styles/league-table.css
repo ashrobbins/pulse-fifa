@@ -37,6 +37,13 @@
     font-weight: bold;
 }
 
+@media (max-width: 960px) {
+
+    .league-table {
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 600px) {
 
     .league-table__team {

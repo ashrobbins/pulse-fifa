@@ -36,7 +36,10 @@ function App() {
         const resultsQuery = ref( db, '/results' );
         return onValue( resultsQuery, ( snapshot ) => {
             snapshot.forEach( result => {
-                const resultData = result.val();
+                const resultData = {
+                    key: result.key,
+                    ...result.val()
+                };
 
                 if ( resultData ) {
                     results.push( resultData );

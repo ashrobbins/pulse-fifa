@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { getDatabase, ref, remove } from "firebase/database";
 import '../../styles/results.css';
 
 export function Result( match, players ) {
@@ -47,6 +48,12 @@ export function Result( match, players ) {
          } );
     }, [ matchData ] );
 
+    function handleDeleteClick() {
+        const db = getDatabase();
+        const testRef = ref( db, 'results/' + match.match.key );
+        remove( testRef );
+    }
+
     return (
         <li className='results__item'>
             <span className={ `results__player results__player--home ${ team1?.score < team2?.score ? 'results__player--loser' : '' }` }>{ team1?.name }</span>
@@ -56,6 +63,7 @@ export function Result( match, players ) {
                 <span className='results__score'>{ team2?.score }</span>
             </span>
             <span className={ `results__player results__player--away ${ team2?.score < team1?.score ? 'results__player--loser' : '' }` }>{ team2?.name }</span>
+            <button className="results__delete" onClick={ handleDeleteClick }>❌</button>
         </li>
     )
 }
