@@ -28,7 +28,7 @@ function App() {
 
             setPlayers( playersData );
         });
-    }, [] );
+    } );
 
     useEffect( () => {
         let results = [];
@@ -45,7 +45,7 @@ function App() {
 
             setResults( results );
         } );
-    }, [] );
+    } );
 
     return (
         <Fragment>
