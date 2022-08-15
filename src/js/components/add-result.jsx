@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
+import { SCORES } from "../common/constants";
 
 export function AddResult( players ) {
     const [ player1, setPlayer1 ] = useState( 0 );
@@ -50,6 +51,11 @@ export function AddResult( players ) {
         const testRef = ref( db, 'results' );
         const newTestRef = push( testRef );
         set( newTestRef, result );
+
+        setPlayer1( 0 );
+        setPlayer1Score( 0 );
+        setPlayer2( 0 );
+        setPlayer2Score( 0 );
     }
 
     return (
@@ -62,19 +68,25 @@ export function AddResult( players ) {
             </select>
 
             <div className='add-result__scores'>
-                <input
-                    type='number'
+                <select
                     className="add-result__score"
                     value={ player1Score }
                     onChange={ handlePlayer1ScoreChange }
-                />
+                >
+                    { SCORES.map( score => {
+                            return <option key={ `home-score_${ score }`} value={ score }>{ score }</option>
+                        } ) }
+                </select>
                 -
-                <input
-                    type='number'
+                <select
                     className="add-result__score"
                     value={ player2Score }
                     onChange={ handlePlayer2ScoreChange }
-                />
+                >
+                    { SCORES.map( score => {
+                            return <option key={ `home-score_${ score }`} value={ score }>{ score }</option>
+                        } ) }
+                </select>
             </div>
 
             <select value={ player2 } onChange={ handlePlayer2Change } className="add-result__player">

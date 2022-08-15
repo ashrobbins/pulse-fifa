@@ -10,15 +10,15 @@
 }
 
 .add-result__score {
-    width: 3rem;
+    width: 4.6rem;
     margin: 0 1rem;
     padding: 0;
     text-align: center;
-    appearance: text;
 }
 
 .add-result__player,
 .add-result__score {
+    height: 3.2rem;
     padding: 0;
     line-height: 3.2rem;
     font-size: 1.6rem;
