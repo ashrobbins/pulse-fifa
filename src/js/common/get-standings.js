@@ -112,6 +112,7 @@ export const getStandings = ( players, results ) => {
 
         if ( results ) {
             playerObj = {
+                id: player.id,
                 name: player.name,
                 team: player.team,
                 played: results.length,

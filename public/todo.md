@@ -6,7 +6,8 @@
 ✅ ~Ability to delete a score~
 ✅ ~Tertiary standings sort on goals scored~
 ✅ ~Don't let same result get posted twice~
-✅ Emojis
+✅ ~Emojis~
+✅ ~Show player results~
 
 **Nice-to-haves**
 

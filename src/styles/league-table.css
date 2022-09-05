@@ -1,4 +1,4 @@
-.league-table {
+.league-table__table {
     width: 100%;
     margin-bottom: 3rem;
     background-color: #ffffff;
@@ -19,6 +19,39 @@
 
 .league-table__row + .league-table__row td {
     border-top: 1px solid #e5ecf2;
+}
+
+.league-table__row .player-results {
+    max-height: 200rem;
+    overflow: hidden;
+}
+
+.league-table__row--results td {
+    padding-top: 0;
+    cursor: default;
+}
+
+.league-table__row--closed .player-results {
+    max-height: 0;
+}
+
+.league-table__row--closed td {
+    padding: 0;
+    border-top: 0 !important;
+}
+
+.league-table__arrow {
+    margin-right: .5rem;
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.league-table__row:hover {
+    cursor: pointer;
+}
+
+.league-table__row:hover .league-table__arrow {
+    color: #000000;
 }
 
 .league-table .league-table__player {
