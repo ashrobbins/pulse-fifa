@@ -42,7 +42,7 @@
 
 .seasons button:hover,
 .season--selected button {
-    background-color: #e19e99;
+    background-color: #000000;
     color: #ffffff;
 }
 
