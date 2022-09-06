@@ -3,7 +3,7 @@ import { LeagueTableRow } from './league-table-row';
 import { getStandings } from '../common/get-standings';
 import { useMemo } from 'react';
 
-export function LeagueTable( players, results ) {
+export function LeagueTable( players, results, isSeasonComplete ) {
 
     const standings = useMemo( () => {
         if ( players.players && players.results ) {
@@ -35,6 +35,7 @@ export function LeagueTable( players, results ) {
                             player={ player }
                             results={ players.results }
                             players={ players.players }
+                            champion={ players.isSeasonComplete && index === 0 }
                             />
                     } ) }
                 </tbody>

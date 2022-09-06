@@ -1,0 +1,51 @@
+.season-complete {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 0;
+    color: rgb(207, 179, 21);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.seasons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding: 0 4rem;
+    background-color: #ffffff;
+}
+
+.seasons h2 {
+    font-size: 1.4rem;
+}
+
+.seasons ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    margin-left: 3rem;
+    padding: 0;
+}
+
+.seasons li + li {
+    border-left: 1px solid #ffffff;
+}
+
+.seasons button {
+    display: block;
+    padding: 0 2rem;
+    line-height: 4.2rem;
+    background-color: #eeeeee;
+    border: 0;
+    cursor: pointer;
+}
+
+.seasons button:hover,
+.season--selected button {
+    background-color: #e19e99;
+    color: #ffffff;
+}
+
+.season--selected button {
+    font-weight: bold;
+}

@@ -8,10 +8,11 @@
 ✅ ~Don't let same result get posted twice~
 ✅ ~Emojis~
 ✅ ~Show player results~
+✅ ~Champion styles at end of season~
+✅ ~Prevent player vs player~
 
 **Nice-to-haves**
 
 🔲 Create new league
 🔲 Create new seasons
 🔲 Add players via UI
-🔲 Champion styles at end of season

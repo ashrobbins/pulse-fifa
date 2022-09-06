@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getDatabase, ref, remove } from "firebase/database";
 import '../../styles/results.css';
 
-export function Result( match, players ) {
+export function Result( match, players, selectedSeason, setResults ) {
     const [ matchData, setMatchData ] = useState( {} );
     const [ team1, setTeam1 ] = useState( {} );
     const [ team2, setTeam2 ] = useState( {} );
@@ -49,8 +49,10 @@ export function Result( match, players ) {
     }, [ matchData ] );
 
     function handleDeleteClick() {
+        match.setResultsUpdated( true );
+
         const db = getDatabase();
-        const testRef = ref( db, 'results/' + match.match.key );
+        const testRef = ref( db, `seasons/${ match.selectedSeason.key }/results/` + match.match.key );
         remove( testRef );
     }
 

@@ -26,6 +26,15 @@
     overflow: hidden;
 }
 
+.league-table__row--champion {
+    background-color: gold;
+}
+
+.league-table__row--champion .league-table__team,
+.league-table__row--champion .league-table__arrow {
+    color: #000000;
+}
+
 .league-table__row--results td {
     padding-top: 0;
     cursor: default;

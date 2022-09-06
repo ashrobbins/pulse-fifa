@@ -3,11 +3,13 @@ import '../../styles/league-table.css';
 import { useMemo, useState } from 'react';
 import { Result } from '../../js/components/result';
 
-export function LeagueTableRow( player, results, players ) {
+export function LeagueTableRow( player, results, players, champion ) {
 
     const [ resultsOpen, setResultsOpen ] = useState( false );
 
     const resultsOpenClass = resultsOpen ? '' : 'league-table__row--closed';
+
+    const championClass = player.champion ? 'league-table__row--champion' : '';
 
     const playerResults = useMemo( () => {
         return player.results.filter( result => {
@@ -27,7 +29,7 @@ export function LeagueTableRow( player, results, players ) {
 
     return (
         <Fragment>
-            <tr className='league-table__row' onClick={ clickHandler }>
+            <tr className={ `league-table__row ${ championClass }` } onClick={ clickHandler }>
                 <td className='league-table__player'>
                     <span className='league-table__arrow'>&#9660;</span>
                     { player.player.name }

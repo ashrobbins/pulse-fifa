@@ -27,7 +27,8 @@ export function AddResult( players, checkResultExists ) {
 
     const canSubmit = useMemo( () => {
         if ( player1 === 0
-        || player2 === 0 ) {
+        || player2 === 0
+        || player1 === player2 ) {
             return false;
         }
 
@@ -57,7 +58,7 @@ export function AddResult( players, checkResultExists ) {
             }, THREE_SECONDS );
         } else {
             const db = getDatabase();
-            const testRef = ref( db, 'results' );
+            const testRef = ref( db, `seasons/${ players.selectedSeason.key }/results` );
             const newTestRef = push( testRef );
             set( newTestRef, result );
 
