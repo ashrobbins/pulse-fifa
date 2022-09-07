@@ -1,0 +1,51 @@
+.new-season {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem;
+}
+
+.new-season__players {
+    max-width: 46rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+    border-top: 3px solid black;
+}
+
+.new-season__player {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.new-season__field input,
+.new-season__field select {
+    margin-left: 2rem;
+    padding: 0 1rem;
+    line-height: 3rem;
+    border: 1px solid #000000;
+}
+
+.new-season__field select {
+    height: 3rem;
+}
+
+.new-season__submit {
+    width: 20rem;
+    padding: 0 1.6rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 4rem;
+    background-color: #dddddd;
+    border: 0;
+}
+
+.new-season__submit:disabled {
+    pointer-events: none;
+}
+
+.new-season__submit:hover {
+    cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+}

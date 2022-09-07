@@ -172,6 +172,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (max-width: 450px) {
 
+    .add-result {
+        margin-bottom: 2rem;
+    }
+
     .add-result__player,
     .add-result__score {
         height: 3.2rem;

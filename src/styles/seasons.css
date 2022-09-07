@@ -49,3 +49,17 @@
 .season--selected button {
     font-weight: bold;
 }
+
+@media (max-width: 960px) {
+
+    .season-complete {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .seasons {
+        margin-bottom: 2rem;
+    }
+}

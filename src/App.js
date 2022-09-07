@@ -8,6 +8,7 @@ import { LeagueTable } from './js/components/league-table';
 import { AddResult } from './js/components/add-result';
 import { Result } from './js/components/result';
 import { SeasonSelector } from './js/components/season-selector';
+import { NewSeason } from './js/components/new-season';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     const [ players, setPlayers ] = useState( [] );
     const [ results, setResults ] = useState( [] );
     const [ resultsUpdated, setResultsUpdated ] = useState( false );
+    const [ createNewSeason, updateCreateNewSeason ] = useState( false );
 
     useEffect( () => {
         let seasonsData = [];
@@ -42,6 +44,10 @@ function App() {
             setSelectedSeason( seasons[ seasons.length - 1 ] );
         }
     }, [ seasons ] );
+
+    useEffect( () => {
+        setSelectedSeason( seasons[ seasons.length ] );
+    }, [ createNewSeason ] );
 
     useEffect( () => {
         if ( !selectedSeason?.key ) {
@@ -121,40 +127,49 @@ function App() {
                 <h1>FIFA League</h1>
             </header>
             { seasons.length ? (
-                <SeasonSelector seasons={ seasons } selectedSeason={ selectedSeason } setSelectedSeason={ setSelectedSeason } />
+                <SeasonSelector
+                    seasons={ seasons }
+                    selectedSeason={ selectedSeason }
+                    setSelectedSeason={ setSelectedSeason }
+                    updateCreateNewSeason={ updateCreateNewSeason } />
             ) : null }
-            <div className='App'>
-                { isSeasonComplete ?
-                    <h3 className='season-complete'>Season complete</h3>
-                : null }
 
-                <LeagueTable players={ players } results={ results } isSeasonComplete={ isSeasonComplete } />
-
-                <div className='results'>
-                    { !isSeasonComplete ?
-                        <AddResult
-                            players={ players }
-                            checkResultExists={ checkResultExists }
-                            selectedSeason={ selectedSeason }
-                        />
+            { createNewSeason ? (
+                <NewSeason updateCreateNewSeason={ updateCreateNewSeason } />
+            ) : (
+                <div className='season'>
+                    { isSeasonComplete ?
+                        <h3 className='season-complete'>Season complete</h3>
                     : null }
 
-                    <ul className='results__list'>
-                        { results.length > 0 && players.length > 0 ? (
-                            results.map( ( result, index ) => {
-                                return <Result
-                                    key={ `result_${ index }` }
-                                    match={ result }
-                                    players={ players }
-                                    selectedSeason={ selectedSeason }
-                                    setResults={ setResults }
-                                    setResultsUpdated={ setResultsUpdated }
-                                />
-                            } )
-                        ) : null }
-                    </ul>
+                    <LeagueTable players={ players } results={ results } isSeasonComplete={ isSeasonComplete } />
+
+                    <div className='results'>
+                        { !isSeasonComplete ?
+                            <AddResult
+                                players={ players }
+                                checkResultExists={ checkResultExists }
+                                selectedSeason={ selectedSeason }
+                            />
+                        : null }
+
+                        <ul className='results__list'>
+                            { results.length > 0 && players.length > 0 ? (
+                                results.map( ( result, index ) => {
+                                    return <Result
+                                        key={ `result_${ index }` }
+                                        match={ result }
+                                        players={ players }
+                                        selectedSeason={ selectedSeason }
+                                        setResults={ setResults }
+                                        setResultsUpdated={ setResultsUpdated }
+                                    />
+                                } )
+                            ) : null }
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            ) }
         </Fragment>
     );
 }

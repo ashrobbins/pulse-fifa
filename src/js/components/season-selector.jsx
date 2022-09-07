@@ -1,6 +1,6 @@
 import '../../styles/seasons.css';
 
-export function SeasonSelector( seasons, selectedSeason, setSelectedSeason ) {
+export function SeasonSelector( seasons, selectedSeason, setSelectedSeason, updateCreateNewSeason ) {
 
     function clickHandler( season ) {
         seasons.setSelectedSeason( season );
@@ -9,7 +9,7 @@ export function SeasonSelector( seasons, selectedSeason, setSelectedSeason ) {
 
     return (
         seasons.seasons && seasons.selectedSeason ? (
-            <div className='seasons'>
+            <div className='seasons season-selector'>
                 <h2>Seasons</h2>
                 <ul>
                     { seasons.seasons.map( ( season, index ) => {
@@ -18,7 +18,7 @@ export function SeasonSelector( seasons, selectedSeason, setSelectedSeason ) {
                         </li>
                     } ) }
                     <li>
-                        <button>+</button>
+                        <button onClick={ () => seasons.updateCreateNewSeason( true ) }>+</button>
                     </li>
                 </ul>
             </div>

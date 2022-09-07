@@ -10,9 +10,9 @@
 ✅ ~Show player results~
 ✅ ~Champion styles at end of season~
 ✅ ~Prevent player vs player~
+✅ ~Create new seasons~
+✅ ~Add players via UI~
+🔲 Player fixture lists
 
 **Nice-to-haves**
 
-🔲 Create new league
-🔲 Create new seasons
-🔲 Add players via UI
